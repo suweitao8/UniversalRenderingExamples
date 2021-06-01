@@ -13,8 +13,60 @@ Shader "Unlit/1.LitToon"
             "RenderType" = "Opaque" 
         }
    
+        Pass {
+            Tags {
+                "LightMode"="SRPDefaultUnlit"
+            }
+            
+            Cull Front
+            
+            HLSLPROGRAM
+
+            #pragma vertex vert
+            #pragma fragment frag
+            
+            #include "Packages/com.unity.render-pipelines.universal/ShaderLibrary/Core.hlsl"
+
+            struct a2v
+            {
+                float4 vertex: POSITION;
+                float2 uv : TEXCOORD0;
+                float3 normal : NORMAL;
+            };
+            
+            struct v2f
+            {
+                float4 positionCS : SV_POSITION;
+            };
+            
+            v2f vert(a2v v)
+            {
+                v2f o = (v2f)0;
+
+                // 位置
+                VertexPositionInputs positionInputs = GetVertexPositionInputs(v.vertex.xyz + v.normal.xyz * 0.003);
+                o.positionCS = positionInputs.positionCS;
+                
+                return o;
+            }
+            
+            half4 frag(v2f i): SV_Target
+            {
+                half4 col = 0.0;
+                return col;
+            }
+
+            ENDHLSL
+        }
+        
         Pass
         {
+            Tags {
+                "LightMode"="UniversalForward"
+            }
+            
+            Cull Back
+            
             HLSLPROGRAM
 
             #pragma vertex vert

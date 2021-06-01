@@ -27,7 +27,11 @@ Material:
         m_Texture: {fileID: 2800000, guid: 055e6c357a75bdc449b64a85a48684cf, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
-    m_Floats: []
+    m_Floats:
+    - _AddLights: 1
+    - _Gloss: 38
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Diffuse: {r: 1, g: 1, b: 1, a: 1}
+    - _Specular: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []
